@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friends</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-success navbar-dark  row">
+        <div class="col-6">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">My page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/messages">Messages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/info">About me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/photos">Photos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/friends">Friends</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/requests">Notification</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/settings">Settings</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-6 text-right">
+            <li class="nav-item " >
+                <a class="nav-link text-danger font-weight-bold" href="/logout">Logout</a>
+            </li>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center">
+        <form class="form-inline" action="/search" method="post">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search">
+            <button class="btn btn-success" type="submit">Search</button>
+        </form>
+    </nav>
+
+    {%for i in list %}
+    <div class="media border p-3">
+        <img src="../static/images/{{ i.avatar }}" alt="{{ i.firstname }}  {{ i.lastname }} " class="mr-3 mt-3 rounded-circle" style="width:60px;">
+        <div class="media-body">
+            <h4>{{ i.firstname }}  {{ i.lastname }} <p align="right">
+            <form align="right" action="/page/{{i.user_id}}">
+                <button>Profile</button>
+            </form>
+            <form align="right" action="/messages/{{i.user_id}}">
+                <button><img src="../static/images/Message.png" width="100px" height="100px"></button>
+            </form>
+            </p>
+            </h4>
+        </div>
+    </div>
+    {%endfor%}
+</body>
+</html>

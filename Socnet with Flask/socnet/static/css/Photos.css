@@ -1,0 +1,30 @@
+*{
+margin:0;
+padding:0;
+
+}
+
+#d1{
+width:20%;
+min-height:800px;
+background:rgb(52, 89, 51);
+}
+
+#d2{
+width:60%;
+min-height:800px;
+background:rgb(69, 55, 52);
+}
+
+
+#d3{
+width:20%;
+min-height:800px;
+background:rgb(35, 77, 89);
+}
+
+#d1,#d2,#d3{
+display:inline-block;
+vertical-align:top;
+}
+

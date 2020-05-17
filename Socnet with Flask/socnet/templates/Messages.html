@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messages</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/css/Messages.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-success navbar-dark  row m-0 ">
+        <div class="col-6">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">My page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/messages">Messages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/info">About me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/photos">Photos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/friends">Friends</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/requests">Notification</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/settings">Settings</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-6 text-right">
+           <a class="nav-link text-danger font-weight-bold" href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-between">
+        <form class="form-inline" action="/">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+        </form>
+    </nav>
+    <div class="list">
+
+        <ul id='friend-list'>
+        {%for i in flist%}
+            <a href="/message/{{ i.user_id }}">
+            <li class='friend'>
+            {%if i.avatar==None%}
+                <img src="../static/images/friend.png" >
+            {%else%}
+                <img src="../static/images/{{i.avatar}}">
+            {%endif%}
+        <div class='name'>
+            {{i.firstname}} {{i.lastname}}
+        </div>
+            </li>
+             </a>
+        {%endfor%}
+        </ul>
+    </div><div class="area">
+         <ul class="textul">
+        <div class='name'>
+            {{ us.firstname }} {{ us.lastname }}
+        </div>
+        {% for i in mes %}
+             {% if i.user_1 == session['user'] %}
+                <p style="text-align:right">{{ i.message }}</p>
+             {% else %}
+                <p style="text-align:left">{{ i.message }}</p>
+             {% endif %}
+        {% endfor %}
+
+        <form action="/sendmessage/{{ us.user_id }}" method="post">
+            <textarea required="" name="message"></textarea>
+            <button class="sendbutton">Send</button>
+        </form>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    {%for i in list %}
+    <div class="media border p-3">
+        <img src="img_avatar3.png" alt="{{i.firstname}}  {{ i.lastname}} " class="mr-3 mt-3 rounded-circle" style="width:60px;">
+        <div class="media-body">
+            <h4>{{ i.firstname }}  {{ i.lastname }} <p align="right">
+            <form align="right" action="/page/{{i.user_id}}">
+                <button>Profile</button>
+            </form>
+            <form align="right" action="/messages/{{i.user_id}}">
+                <button><img src="../static/images/Micon.png" width="50px" height="50px"></button>
+            </form>
+            <form align="right" action="/requests/{{i.user_id}}" method="post">
+                <button><img src="../static/images/AddFriend.png" width="50px" height="50px"></button>
+            </form>
+            </p>
+            </h4>
+        </div>
+    </div>
+    {%endfor%}
+</body>
+</html>

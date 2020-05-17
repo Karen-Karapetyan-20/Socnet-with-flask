@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style:none;
+}
+
+.bar {
+    display: inline-block;
+}
+
+.bar {
+    width: 30%;
+    min-height: 100%;
+    background: #f2ae45;
+}
+
+.img_div {
+    min-height: 300px;
+}
